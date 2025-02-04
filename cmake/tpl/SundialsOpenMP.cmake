@@ -73,6 +73,9 @@ if(OPENMP_FOUND AND (ENABLE_OPENMP_DEVICE OR SUPERLUDIST_OpenMP))
   message(
         "Skipping OpenMP device/version check."
         "SUNDIALS OpenMP functionality dependent on OpenMP 4.5+ is not guaranteed.")
+  
+  set(OPENMP45_FOUND TRUE)
+  set(OPENMP_SUPPORTS_DEVICE_OFFLOADING TRUE)
 
   # if(OPENMP_DEVICE_WORKS)
 
