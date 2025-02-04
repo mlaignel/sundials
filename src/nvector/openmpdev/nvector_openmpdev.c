@@ -1711,9 +1711,7 @@ SUNErrCode N_VWrmsNormVectorArray_OpenMPDEV(int nvec, N_Vector* X, N_Vector* W,
     wd_dev = wd_dev_ptrs[i];
     sum    = ZERO;
 #pragma omp parallel for reduction(+ : sum) schedule(static, 1)
-    {
-      for (j = 0; j < N; j++) { sum += SUNSQR(xd_dev[j] * wd_dev[j]); }
-    }
+    for (j = 0; j < N; j++) { sum += SUNSQR(xd_dev[j] * wd_dev[j]); }
     nrm[i] = SUNRsqrt(sum / N);
   }
   free(wd_dev_ptrs);
